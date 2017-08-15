@@ -5,74 +5,113 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Test Localization</title>
-
 		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
-
 		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 		<!--[if lt IE 9]>
-			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
-			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
+		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 		<![endif]-->
 		<style type="text/css">
 			.nganan {
 				text-align: right;
-    			float: right;
+			float: right;
 			}
 		</style>
 	</head>
 	<body>
-		<h1 class="text-center">Localization Test</h1>
+		<h1 class="text-center">Lion::Simplifying Localization! (l10n)</h1>
 		<hr/>
 		<div class="container-fluid">
-		  <div class="row">
-		  	<div class="col-3">
-		  		<div class="card">
-				  <div class="card-header">
-				    XML File
-				  </div>
-				  <div class="card-body">
-				    <h4 class="card-title">Select file string.xml</h4>
-				    <div class="card-text">
-				    	<form>
-						  <div class="form-group">
-						    <input type="file" class="form-control-file stringnya" id="language1"><br>
-						    <input type="file" class="form-control-file stringnya" id="language2">
+			<div class="row">
+				<div class="col-3">
+					<div class="card">
+						<div class="card-header">
+							Android XML File
+						</div>
+						<div class="card-body">
+							<h4 class="card-title">Select file string.xml</h4>
+							<div class="card-text">
+								<form>
+									<div class="form-group">
+										<input type="file" class="form-control-file stringnya" id="language1"><br>
+										<input type="file" class="form-control-file stringnya" id="language2">
+									</div>
+								</form>
+							</div>
+							<a href="#" class="btn btn-primary" id="proses">Process!</a>
+						</div>
+					</div>
+					<hr/>
+					<div class="card">
+						<ul class="list-group list-group-flush">
+							<!-- <li class="list-group-item">Total String: <span class="badge badge-primary nganan">0</span></li> -->
+							<li class="list-group-item">String 1 Passed: <span class="badge badge-success nganan" id="howMany1pass">0</span></li>
+							<li class="list-group-item">String 1 Fail: <span class="badge badge-warning nganan" id="howMany1fail">0</span></li>
+							<li class="list-group-item">String 2 Passed: <span class="badge badge-success nganan" id="howMany2pass">0</span></li>
+							<li class="list-group-item">String 2 Fail: <span class="badge badge-warning nganan" id="howMany2fail">0</span></li>
+						</ul>
+					</div>
+					<hr/>
+					
+					<div class="card">
+						<h4 class="card-header">Actions</h4>
+						<br/>
+						<button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">Save Test</button>
+						<hr/>
+						<div class="dropdown show">
+						  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						    Load previous test
+						  </a>
+
+						  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" id="listDb">
 						  </div>
-						</form>
-				    </div>
-				    <a href="#" class="btn btn-primary" id="proses">Process!</a>
-				  </div>
+						</div>
+						<button type="button" class="btn btn-default">Export Jira</button>
+					</div>
 				</div>
-				<hr/>
-				<div class="card">
-				  <ul class="list-group list-group-flush">
-				    <li class="list-group-item">Total String: <span class="badge badge-primary nganan">0</span></li>
-				    <li class="list-group-item">String Passed: <span class="badge badge-success nganan">0</span></li>
-				    <li class="list-group-item">String Error: <span class="badge badge-warning nganan">0</span></li>
-				  </ul>
+				<div class="col-9">
+					<table class="table table-sm table-bordered table-hover" id="resultList">
+					</table>
+					<!-- versi generateReport
+									<table class="table table-sm table-bordered table-hover" id="tableResult" style="font-size: .7em;">
+										<thead class="thead-default">
+											<tr style="text-align: center;">
+												<th>#</th>
+												<th style="width:20%">Attribute</th>
+												<th>Language 1</th>
+												<th>Language 2</th>
+												<th>Status</th>
+											</tr>
+										</thead>
+										<tbody id="result">
+										</tbody>
+									</table>
+					-->
 				</div>
-		  	</div>
-		  	<div class="col-9">
-				<table class="table table-sm table-bordered table-hover" id="tableResult" style="font-size: .7em;">
-				  <thead class="thead-default">
-				    <tr style="text-align: center;">
-				      <th>#</th>
-				      <th style="width:20%">Attribute</th>
-				      <th>Language 1</th>
-				      <th>Language 2</th>
-				      <th>Status</th>
-				    </tr>
-				  </thead>
-				  <tbody id="result">
-				  </tbody>
-				</table>
-		  	</div>
-
-		  </div>
+			</div>
 		</div>
-
+		<!-- Modal -->
+		<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Save as name</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<input type="text" placeholder="Example: build1" id="txt_saveName" class="form-control" value="" required="required">
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+						<button type="button" class="btn btn-primary" id="btn_saveDB" data-dismiss="modal">Save changes</button>
+					</div>
+				</div>
+			</div>
+		</div>
 		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
@@ -81,17 +120,43 @@
 		<script type="text/javascript" src="lib/app.js"></script>
 		<script type="text/javascript">
 			jQuery(document).ready(function($) {
-
 				$('.stringnya').on('change', function(e){
 					console.log($(this));
 					handleFileSelect($(this));
 				});
-
 				$('#proses').on('click', function(){
 					LOCALIZER.processing();
 				});
+
+				$('#dropdownMenuLink').on('click', function(){
+					$('#listDb').html(getListDb());
+				});
+
+				$('#btn_saveDB').on('click', function(){
+					var getName = $('#txt_saveName').val().replace(/ /g,"_");
+					let status = LOCALIZER.save(getName);
+					if (!status){
+						alert("no data saved");
+					}else{
+						alert("Data has been saved!")
+					}
+				});
+				$(document).on('click', '.custom-control-input', function(event) {
+					// event.preventDefault();
+					updateStatus();
+					/* Act on the event */
+				});
+
+				$(document).on('click', '.dbSelected', function(event) {
+					// event.preventDefault();
+					// if ($('.keyword-idx').length > 0){
+						let dbName = $(event.target).text();
+	  					LOCALIZER.autoCompare(dbName);
+					// }else{
+					// 	alert("No data processed to compare");
+					// }
+				});
 			});
 		</script>
-
 	</body>
 </html>
