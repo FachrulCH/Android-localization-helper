@@ -32,7 +32,7 @@ Prerequisite: OSX has `plutil` but I'm using ubuntu, so I need install `plistuti
 
 Direct Run Application here
 ----
-<https://fachrulch.github.io/Lion-Simplifying-Localization-Test/>
+<https://fachrulch.github.io/lion-project/>
 
 ### preview app
-[![ScreenShot](https://raw.githubusercontent.com/FachrulCH/Android-localization-helper/master/Screenshot%20from%202017-08-13%2000-38-46.png)
+![ScreenShot](https://raw.githubusercontent.com/FachrulCH/Android-localization-helper/master/ss.png)
