@@ -28,18 +28,25 @@
 				<div class="col-3">
 					<div class="card">
 						<div class="card-header">
-							Android XML File
+							Language XML File
 						</div>
 						<div class="card-body">
 							<h4 class="card-title">Select file string.xml</h4>
 							<div class="card-text">
 								<form>
+									<select class="form-control" id="platformType">
+								      <option value="--">Choose platform</option>
+								      <option value="apk">Android</option>
+								      <option value="ipa">iOS</option>
+								    </select>
+								    <br>
 									<div class="form-group">
-										<input type="file" class="form-control-file stringnya" id="language1"><br>
-										<input type="file" class="form-control-file stringnya" id="language2">
+										<input type="file" class="form-control-file stringnya" id="language1" disabled="disabled"><br>
+										<input type="file" class="form-control-file stringnya" id="language2" disabled="disabled">
 									</div>
 								</form>
 							</div>
+							<br/>
 							<a href="#" class="btn btn-primary" id="proses">Process!</a>
 						</div>
 					</div>
@@ -58,7 +65,7 @@
 					<div class="card">
 						<h4 class="card-header">Actions</h4>
 						<br/>
-						<button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">Save Test</button>
+						<button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal" disabled="disabled" id="btn_saveTest">Save Test</button>
 						<hr/>
 						<div class="dropdown show">
 						  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -68,7 +75,7 @@
 						  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" id="listDb">
 						  </div>
 						</div>
-						<button type="button" class="btn btn-default">Export Jira</button>
+						<button type="button" class="btn btn-default" disabled="disabled">Export Jira</button>
 					</div>
 				</div>
 				<div class="col-9">
@@ -121,10 +128,11 @@
 		<script type="text/javascript">
 			jQuery(document).ready(function($) {
 				$('.stringnya').on('change', function(e){
-					console.log($(this));
-					handleFileSelect($(this));
+					handleFileSelect($(this), $('#platformType').val());
 				});
+
 				$('#proses').on('click', function(){
+					$('#btn_saveTest').prop("disabled",false);
 					LOCALIZER.processing();
 				});
 
@@ -149,12 +157,22 @@
 
 				$(document).on('click', '.dbSelected', function(event) {
 					// event.preventDefault();
-					// if ($('.keyword-idx').length > 0){
+					if ($('.keyword-idx').length > 0){
 						let dbName = $(event.target).text();
 	  					LOCALIZER.autoCompare(dbName);
-					// }else{
-					// 	alert("No data processed to compare");
-					// }
+					}else{
+						alert("No data processed to compare");
+					}
+				});
+
+				$('#platformType').on('change', function(e){
+					if ($('#platformType').val() === 'apk' || $('#platformType').val() === 'ipa'){
+						$('#language1').prop("disabled",false);
+						$('#language2').prop("disabled",false);
+					}else{
+						$('#language1').prop("disabled",true);
+						$('#language2').prop("disabled",true);
+					}
 				});
 			});
 		</script>
